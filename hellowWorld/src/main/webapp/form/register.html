@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입(form/register.html)</title>
+    <style>
+        fieldset {
+            width: 40%;
+            margin: auto;
+        }
+
+        input[type='number'] {
+            display: inline-block;
+            width: 80px;
+        }
+
+        div {
+            width: 40%;
+            margin: 10px auto;
+        }
+
+        th,
+        td {
+            border: 2px dotted plum;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 회원정보 입력화면 -->
+    <form action="">
+        <fieldset>
+            <legend>회원정보입력</legend>
+            <hr>
+            <table border="1" style="border-collapse: collapse;">
+                <tr>
+                    <th>이름</th>
+                    <td>
+                        <input type="text">
+                        <!-- <input type="text" readonly>하면 회원수정할때 이름값은 못바뀌게 함, update할 대상이기 때문에 건들면안됨  -->
+                    </td>
+                </tr>
+                <tr>
+                    <th>아이디</th>
+                    <td>
+                        <input type="text" name="id" id="id">
+                        <button type="button">중복확인</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>비밀번호</th>
+                    <td style="font-size: 0.8em;">
+                        <input type="password" name="" id=""> *4~16자 입력해주세요
+                    </td>
+                </tr>
+                <tr>
+                    <th>비밀번호 확인</th>
+                    <td>
+                        <input type="password" name="" id="">
+                    </td>
+                </tr>
+                <tr>
+                    <th>생일/성별</th>
+                    <td>
+                        <!-- <select>
+                            <option value="">선택</option>
+                            <option value="">1997</option>
+                            <option value="">1998</option>
+                            <option value="">1999</option>
+                            <option value="">2000</option>
+                        </select> 할거 넘 많아서 안함 자바스크립트로 함 -->
+                        <input type="number" name="" id="">년
+                        <input type="number" name="" id="">월
+                        <input type="number" name="" id="">일
+                        <input type="radio" name="gender" id="men" checked><label for="men">남</label>
+                        <input type="radio" name="gender" id="wamen"><label for="wamen">여</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th>이메일</th>
+                    <td>
+                        <input style="width: 100px;" type="text" name="" id="">@
+                        <select name="email">
+                            <option value="">선택</option>
+                            <option value="">daum.net</option>
+                            <option value="" selected>naver.com</option>
+                            <!--selected 디폴트값 정해줌-->
+                            <option value="">google.com</option>
+                            <!-- <option value="">직접입력</option> 이것도 자바스크립트로 이벤트기능 해야함 -->
+                        </select>
+                        <button>중복확인</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>휴대폰</th>
+                    <td>
+                        <input type="text" name="" id="">
+                        <!-- 여기도 select 010,011 이런거해줘야하남..? -->
+                        <input type="number" name="" id=""> -
+                        <input type="number" name="" id="">
+                    </td>
+                </tr>
+                <tr>
+                    <th>추천인</th>
+                    <td>
+                        <input type="text" name="" id="">
+                        <button type="button">추천인 검색</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>뉴스메일</th>
+                    <td>
+                        <label><input type="radio" name="news" id="news" checked>받습니다.</label>
+                        <label><input type="radio" name="news" id="news">받지 않습니다.</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th>SMS안내</th>
+                    <td>
+                        <label><input type="radio" name="sns" id="sns" checked>받습니다.</label>
+                        <label><input type="radio" name="sns" id="sns">받지 않습니다.</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th>앱Push알림</th>
+                    <td><label><input type="radio" name="push" id="push" checked>받습니다.</label>
+                        <label><input type="radio" name="push" id="push">받지 않습니다.</label>
+                    </td>
+                </tr>
+                <tr>
+                    <!-- p180.meter 태그 -->
+                    <th>미터</th>
+                    <td>
+                        <meter value=".5" min="0" max="1"></meter>
+                    </td>
+                </tr>
+                <tr>
+                    <th>자기소개</th>
+                    <td>
+                        <textarea name="intro" id="" cols="30" rows="10"></textarea>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <input type="image" width="100px" src="../form/a.png">
+                <input type="image" width="100px" src="../form/aa.png">
+            </div>
+        </fieldset>
+
+    </form>
+
+</body>
+
+</html>

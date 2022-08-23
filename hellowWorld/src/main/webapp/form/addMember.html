@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원정보등록(form/addMember.html)</title>
+</head>
+<body>
+	<fieldset>
+		<legend>회원가입</legend>
+		<form action="../AddBankMemberServlet" method="get">
+			<label>사용자ID: <input type="text" name="id" value="user4"><br></label>
+			<label>비밀번호: <input type="password" name="pw" value="1234"><br></label> <!-- label사용자에게 보여주기위한 기능 -->
+			<label for="name">사용자이름</label>
+			<input type="text" name="name" id="name" value="신사용">
+			<br>
+			<label for="admin">관리자</label>
+			<input type="radio" name="role" id="admin" value="1" checked> <!-- checked 초기값지정 -->
+			<label for="user">사용자</label>
+			<input type="radio" name="role" id="user" value="0">
+			<br>
+			<input type="submit" value="전송"><br>
+		</form>
+	</fieldset>
+</body>
+</html>

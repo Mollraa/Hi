@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css/sample.html</title>
+</head>
+<!-- 외부스타일 시트 (link~ 해주면 외부파일에서 같은 스타일 적용됨) -->
+<link rel="stylesheet" href="../css2/style.css">
+<style>
+    /* embedding style :내부스타일 시트(style 안에서 해주는거)*/
+    h3 {
+        background-color: aquamarine;
+    }
+
+    /* 그냥 h3보다 .first로 class지정해주면 우선순위 더 높음 (2등..?) */
+    h3.first {
+        background-color: palegreen;
+    }
+
+    p {
+        background-color: pink;
+    }
+
+    h3,
+    p {
+        color: blue;
+    }
+</style>
+
+<body>
+    <!-- 인라인스타일 시트 (우선순위 1등)-->
+    <h3 style="background-color: rgb(255, 230, 0);">안녕하세요. 샘플페이지입니다.</h3>
+    <p> css의 샘플페이지입니다..</p>
+    <h3 class="first">여기는 first클래스입니당.</h3>
+    <h3>여기는 이것도 저것도 아닌그냥 그냥 그냥</h3>
+    <h3>작성자는 백진희입니다.</h3>
+</body>
+
+</html>

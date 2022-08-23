@@ -1,0 +1,14 @@
+h3:nth-last-of-type(1) {
+    color: blueviolet;
+    background-color: bisque;
+    font-size: 30px;
+    font-weight: bold;
+    /* h3 = 자리는 선택자, 지정해서 스타일해줌 */
+    /* nth-last-of-type(1) = 주로 이런조건은 마지막부터 적용시킨다. */
+    /* h3:nth-last-of-type(1){
+        color: blueviolet;
+        background-color: bisque;
+        font-size: 30px;
+        font-weight: bold;
+    } */
+}

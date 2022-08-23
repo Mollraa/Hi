@@ -1,0 +1,14 @@
+/* style.css */
+body{
+    font-size: 27px;
+}
+h2 {
+    color: blue;
+}
+
+p {
+    font-size: 0.9em;
+    /* em = 몇 배율 (body font-size 커지면 커짐) */
+    /* px = 몇 배율 (body font-size 상관없이 고정)*/
+    line-height: 2.0;
+}

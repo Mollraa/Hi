@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table.html</title>
+</head>
+
+<body>
+    <h3>학생 점수</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>title 부분입니다.</td>
+                <th>이름</th>
+                <th>영어</th>
+                <th>수학</th>
+                <th>합계</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="2">data 부분입니다.</td>
+                <td>홍길동</td>
+                <td>80</td>
+                <td>70</td>
+                <td>150</td>
+            </tr>
+            <tr>
+                <td>김민수</td>
+                <td>85</td>
+                <td>75</td>
+                <td>162</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>footer 부분입니다.</td>
+                <td colspan="4">3학년 9반 점수리스트</td>
+            </tr>
+        </tfoot>
+    </table>
+    <br>
+    <figure> 홍길동의 자기소개입니다.
+        <table border="1">
+            <caption>홍길동의 자기소개</caption>
+            <!--caption표에대한 타이틀, 위에만 달아야함-->
+            <tbody>
+                <tr>
+                    <td>이름</td>
+                    <td>홍길동</td>
+                    <td>연락처</td>
+                    <td>010-1234-5678</td>
+                    <td>사진</td>
+                </tr>
+                <tr>
+                    <td>주소</td>
+                    <td colspan="3">대구 중구 중앙대로길 100</td>
+                    <td rowspan="2">
+                        <a target="_blank" href="../profile/hong.html">
+                            <!--프로파일에 있는 홍.html로 이동-->
+                            <img width="200px" src="./img/hong.png" alt="홍길동의 사진입니다."></td></a>
+                    <!--alt = 사진 안뜰때 알려주는 문구-->
+                </tr>
+                <tr>
+                    <td>자기소개</td>
+                    <td colspan="3">프로그램을 공부하는 학생</td>
+                </tr>
+            </tbody>
+        </table>
+        <figcaption style="text-align: center;">
+            홍길동의 자기소개입니다. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <!--&nbsp여백만들어서 간격맞춤-->
+        </figcaption>
+        <figcaption style="padding-left: 16%;">
+            <!--padding으로 간격맞춤-->
+            홍길동의 자기소개입니다.
+        </figcaption>
+    </figure>
+    <br>
+    <table border="1">
+        <caption>자주가는 사이트</caption>
+        <tr>
+            <th>사이트명</th>
+            <th>url</th>
+            <th>설명</th>
+            <th>로고</th>
+        </tr>
+        <tr>
+            <td>Daum</td>
+            <td><a target="_blank" href="https://www.daum.net">www.daum.net</a></td>
+            <td>다음사이트 주소입니다.</td>
+            <td>
+                <a target="_blank" href="https://www.daum.net">
+                    <img width="200px" src="../html/img/d.png" alt="daum 이미지"></td>
+            </a>
+        </tr>
+        <tr>
+            <td>Google</td>
+            <td><a target="_blank" href="https://www.google.com">www.google.com</a></td>
+            <td>구글사이트 주소입니다.</td>
+            <td>
+                <a target="_blank" href="https://www.google.com">
+                    <img width="200px" src="../html/img/g.png" alt="goole 이미지">
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>Naver</td>
+            <td><a target="_blank" href="https://www.naver.com/">www.naver.com</a></td>
+            <td>네이버 페이지입니다.</td>
+            <td>
+                <a target="_blank" href="https://www.naver.com/">
+                    <img width="200px" src="../html/img/n.png" alt="naver 이미지"></td>
+            </a>
+        </tr>
+    </table>
+
+    <!-- jsp할때 맛보기...↓ 페이지 호출하면서 그페이지로 값을 넘겨준다는 뜻...?  -->
+    <a href="../AddBankMemberServlet?id=user1&pw=1234&name=신사용&role=0">bank맴버 추가하기.</a>
+
+
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML#key_resources" target="_blank">mdn사이트의 중요한 자료</a>
+    <a href="https://developer.mozilla.org/ko/docs/Web/HTML#beginners_tutorials" target="_blank">mdn사이트의 초보자 학습서</a>
+
+    <img src="../html/img/hong.png" alt="" usemap="#favorites">
+    <map name="favorites">
+        <area shape="rect" coords="200,200,300,300" href="https://www.naver.com" target="_blank">
+        <area shape="rect" coords="400,400,500,500" href="https://www.google.com" target="_blank">
+    </map>
+
+    <p>Lorem ipsum,</p>
+    <p>dolor</p>
+    <p>sit amet</p>
+    <p>consectetur</p>
+    <p>adipisicing</p>
+    <p>elit.</p>
+    <p>Dignissimos</p>
+    <p>eius</p>
+    <p>consequuntur</p>
+    <p>enim ullam a,</p>
+    <p>quas voluptatum</p>
+    <p>recusandae</p>
+    <p>nobis</p>
+    <p>minima</p>
+    <p>earum,</p>
+    <p>ea eaque</p>
+    <p>officia atque.</p>
+    <p>A qui</p>
+    <p>quas</p>
+    <p> dolorem</p>
+    <p>ea!</p>
+
+
+
+
+</body>
+
+</html>

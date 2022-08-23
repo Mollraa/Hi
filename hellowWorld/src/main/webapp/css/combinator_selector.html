@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css/combinator_selector.html</title>
+    <style>
+        /* > : div기준으로 하위요소, 그냥 div p 하면 div안에 다 포함 */
+        div>p {
+            color: red;
+        }
+
+        /* + : p태그를 기준으로, 바로 옆 태그중에서 span이라는 태그 */
+        p+span {
+            color: blue;
+        }
+        /* ~ : p태그 형제(sibling)태그들.(형제 선택자기능)*/
+        p~span{
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+
+<body> <!-- 복합 셀렉터 (Combinator) -->
+
+    <!-- div>p+span.first -->
+    <div>
+        <p></p>
+        <span class="first"></span>
+    </div>
+
+    <h1>Heading</h1>
+    <div>
+        <p>paragraph1</p>
+        <p>paragraph2</p>
+        <!-- span : 딱히 기능은 없고 범위를 뜻함, 범위 감싸는 태그 -->
+        <span>
+            <p>paragraph3</p>
+        </span>
+        <span>
+            span1
+        </span>
+        <div>div</div>
+        <span>span</span>
+    </div>
+    <p>paragraph4</p>
+</body>
+
+</html>

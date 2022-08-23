@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css/pseudo_selector.html</title>
+<style>
+    /* 가상선택자: 어떤 상태. */
+    a:visited {
+        color: violet;
+        /* visited : 해당 위치에 방문 했었으면 색지정 */
+    }
+
+    a:hover {
+        color: red;
+        /* hover : 해당 글자위에 올리면 색지정, visited먼저 해줘야 순서대로 적용되서 hover등 볼 수 있음*/
+    }
+
+    a:active {
+        /* active : 누른직후 상황 */
+        background-color: aqua;
+    }
+
+    input:focus {
+        background-color: red;
+    }
+    input:checked+span {
+        /* checked : 체크되고 스판에 인접하면 해당컬러로 바꿔주겠다 / 그냥 +span하면 스판에 해당되는거 다 색상입힘 */
+        color: hotpink;
+    }
+    input[type='checkbox']:checked+span{
+        /* type='checkbox'요 타입중에서 checked되고 +span타입일 경우에만 아래 색상을 입혀주겠당*/
+        color: khaki;
+    }
+</style>
+</head>
+<body>
+    <!-- 어떠한 상태가 되면~ 하는 선택자 -->
+    <!-- placeholder : 어떤 값을 입력하세요~ 할때 씀 -->
+    <a href="https://www.daum.net" target="_blank">Daum</a><br>
+    <input type="text" name="" id="" placeholder="focus me">
+    <br>
+    <!--radio는  name으로 하면 같이 묶임-->
+    <input type="radio" name="gender" id=""><span>Male</span><br>
+    <input type="radio" name="gender" id=""><span>FeMale</span><br>
+    <input type="radio" name="gender" id=""><span>Neuter</span><br>
+    <br>
+    <input type="checkbox" name="" id=""><span>자전거</span>
+    <input type="checkbox" name="" id=""><span>자동차</span> 
+    <input type="checkbox" name="" id=""><span>모터사이틀</span> 
+
+</body>
+
+</html>
