@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09/box-sizing.html</title>
+    <!-- 9단원 CSS레이아웃 -->
+    <style>
+        div {
+            width: 270px;
+            height: 120px;
+            margin: 10px;
+            border: 5px solid rgb(171, 88, 219);
+            padding: 10px;
+        }
+
+        .box1 {
+            box-sizing: border-box;
+            display: inline-block;
+            /* 박스로하면 좀 더 편함 */
+        }
+
+        .box2 {
+            box-sizing: content-box;
+            display: inline-block;
+        }
+
+        #first {
+            /* id값이 first인 아이에게 적용 */
+            width: 646px;
+            height: 340px;
+            border: 4px dotted rgb(0, 255, 106);
+            /* 박스로하면 편한이유 */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="first">
+        <div class="box1">border-box</div>
+        <div class="box1">border-box</div>
+        <div class="box2">content-box</div>
+        <div class="box2">content-box</div>
+    </div>
+    <div class="box1">border-box</div>
+    <div class="box2">content-box</div>
+</body>
+
+</html>
