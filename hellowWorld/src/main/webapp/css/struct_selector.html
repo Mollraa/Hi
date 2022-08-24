@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css/struct_selector.html</title>
+    <style>
+        /* 구조적 가상 선택자 */
+        /* li{} 리스트 다선택 하겠다, li:nth-child(1) 순번 정해주는거*/
+        ol>li:nth-child(3){
+            color: hotpink; 
+            /*  li:nth-child(1), ol, ul 의 1번째 애들만 색적용,
+            ol>li:nth-child(1) ol태그의 (1)자식만 가져오겠다. */
+        }
+        ol>li:first-child{
+            border: 1px solid salmon;
+            /* ol>li:first-child = ol의 li의 첫번째 아이만 보더해줌 */
+        }
+        ol>li:nth-last-child(2){
+            color: aquamarine;
+            /* ol>li:nth-last-child(2) = ol의 자식중 li의 마지막두번째 자식 */
+        }
+        ul>li:nth-child(2n){
+            background-color: khaki;
+            /* ul>li:nth-child(2n+1) 하면 반대로 적용 */
+        }
+        ul>li:nth-last-child(2n){
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <ol>
+        <li>Espresso</li>
+        <li>Americano</li>
+        <li>Caffe Latte</li>
+        <li>Caramel Latte</li>
+        <li>Caffe Mocha</li>
+        <li>Cappucino</li>
+    </ol>
+    <ul>
+        <li>Espresso</li>
+        <li>Americano</li>
+        <li>Caffe Latte</li>
+        <li>Caramel Latte</li>
+        <li>Caffe Mocha</li>
+        <li>Cappucino</li>
+    </ul>
+</body>
+
+</html>

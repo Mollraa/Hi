@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css/struct_selector.html</title>
+    <style>
+        /* 구조적 가상 선택자 */
+        p:nth-child(3){
+            color: mediumslateblue;
+        }
+        div>p:nth-of-type(2n) {
+            color: hotpink;
+            /* p:nth-child(2)다포함,   p:nth-of-type(2) = p태그중에서 ()번째*/
+        }
+
+        div>p:nth-last-of-type(2n) {
+            border: 1px solid greenyellow;
+        }
+
+        div>p:first-of-type {
+            /* div>p:first-of-type = div의 p중에서 첫번째 */
+            background-color: rgb(255, 217, 0);
+        }
+        div>p:last-of-type{
+            background-color: bisque;
+        }
+        /* input[type='text'], input[type='email']{
+            background-color: khaki;
+            = 인풋중에서 type지정
+        } */
+        input:not([type='password']){
+            background-color: tan;
+            /* input:not([type='password']) = input중에서 not~조건적어줌, 선택자*/
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>Espresso</h3>
+    <p>Americano</p>
+    <p>Caffe Latte</p>
+    <p>Caramel Latte</p>
+    <h4>Caffe Mocha</h4>
+    <p>Cappucino</p>
+
+    <div>
+        <h3>Espresso</h3>
+        <p>Americano</p>
+        <p>Caffe Latte</p>
+        <p>Caramel Latte</p>
+        <h4>Caffe Mocha</h4>
+        <p>Cappucino</p>
+    </div>
+
+    <input type="text" value="Text">
+    <input type="email" value="Mail">
+    <input type="password" value="1234">
+
+</body>
+
+</html>

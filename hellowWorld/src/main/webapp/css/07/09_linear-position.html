@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<title>선형 그러데이션</title>
+	<style>
+		.grad {
+			width: 90;
+			height: 500px;
+			background: blue;
+			/*css 미지원 브라우저*/
+			/*각 브라우저 회사에 맞게*/
+			background: -webkit-linear-gradient(left top, blue, white);
+			background: -o-linear-gradient(left top, blue, white);
+			background: -moz-linear-gradient(left top, blue, white);
+			/*모질라*/
+			background: linear-gradient(left top, blue, white);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="grad"></div>
+</body>
+
+</html>

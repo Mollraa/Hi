@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css/06_text/font.html</title>
+    <!-- 서버에서 폰트가져오깅 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <!-- css 6장 시작 -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Rubik+Marker+Hatch&display=swap');
+
+        p {
+            font-family: 'Rubik Marker Hatch','Indie Flower';
+            font-weight: 100;
+            font-size: 40px;
+            /* pc에 있는 폰트 해야함 */
+            /* 서버에서 가져올때, link or import하고 CSS rules to specify families 여기 카피해서 위에 복붙하기.
+             font-weight: 400; =이건 두깨지정*/
+        }
+    </style>
+</head>
+
+<body>
+    <p>Using Default Font</p>
+</body>
+
+</html>
