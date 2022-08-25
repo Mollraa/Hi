@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시도별 일일 접종 현황(09/table_ex.html)</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
+
+    table {
+        margin-top: 10px;
+        border: 2px solid lemonchiffon;
+        width: 85%;
+        /* width 전체 넓이 */
+        height: 200px;
+        border-collapse: collapse;
+    }
+
+    .clr_1 {
+        background-color: #0056af;
+        display: inline-block;
+        margin: 1px 1px;
+        vertical-align: middle;
+        width: auto;
+        min-width: 22px;
+        height: auto;
+        min-height: 22px;
+        font-size: 25px;
+        line-height: 21px;
+        font-weight: 500;
+        color: #fff;
+        text-align: center;
+        border-radius: 100%;
+
+    }
+
+    .clr_2 {
+        background-color: #dc4c14;
+        display: inline-block;
+        margin: 1px 1px;
+        vertical-align: middle;
+        width: auto;
+        min-width: 22px;
+        height: auto;
+        min-height: 22px;
+        font-size: 25px;
+        line-height: 21px;
+        font-weight: 500;
+        color: #fff;
+        text-align: center;
+        border-radius: 100%;
+    }
+
+    #day,
+    th {
+        background-color: bisque;
+    }
+    .d_num{
+        background-color: rgb(215, 246, 255)
+    }
+
+    th,
+    td {
+        border: 1px solid lemonchiffon;
+    
+    }
+
+    td {
+        text-align: right;
+        padding-right: 10px;
+    }
+
+    .title {
+        margin-bottom: 10px;
+        text-align: left;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    tbody>td,
+    th {
+        padding: 10px;
+    }
+
+    .sum {
+        background-color: rgb(19, 100, 249);
+        font-weight: bold;
+    }
+
+    body {
+        font-family: 'Hi Melody', cursive;
+        font-weight: 100;
+        font-size: 20px;
+    }
+</style>
+
+
+<body>
+    <h3>시도별 일일 접종 현황</h3>
+    <h4>"접종실적 총괄" (08.25.,00시 기준)</h4>
+    <div>
+        <table>
+            <caption>
+                <span class="hdn">접종총괄정보표 - 1차접종, 2차접종, 3차접종, 4차접종의 당일누적,
+                    당일 실적, 전일 누적으로 구성</span>
+            </caption>
+            <colgroup>
+                <col style="width: 20%;">
+                <col style="width: 26.6666%;">
+                <col style="width: 26.6666%;">
+                <col style="width: 26.6666%;">
+                <col style="width: 26.6666%;">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col">구분</th>
+                    <th scope="col">1차접종</th>
+                    <th scope="col">2차접종</th>
+                    <th scope="col">3차접종</th>
+                    <th scope="col">4차접종</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">"당일누적"
+                        <span class="clr_1">A</span> +
+                        <span class="clr_2">B</span>
+                    </th>
+                    <th class="d_num">45,101,931</th>
+                    <th class="d_num">44,664,114</th>
+                    <th class="d_num">33,539,624</th>
+                    <th class="d_num">7,000,206</th>
+                </tr>
+                <tr>
+                    <th scope="row">"당일 실적"
+                        <span class="r_txt_descript clr_1">A</span>
+                    </th>
+                    <th class="d_num">380</th>
+                    <th class="d_num">380</th>
+                    <th class="d_num">2,305</th>
+                    <th class="d_num">32,088</th>
+                </tr>
+                <tr>
+                    <th scope="row">"전일 누적"
+                        <span class="r_txt_descript clr_2">B</span>
+                    </th>
+                    <th class="d_num">45,101,551</th>
+                    <th class="d_num">44,663,778</th>
+                    <th class="d_num">33,537,319</th>
+                    <th class="d_num">6,968,118</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- 접종실적 총괄 end-->
+    <h4 class="s_title_0">시도별 접종 현황</h4>
+    <div class="data_table tbl_scrl_t">
+        <table>
+            <caption><span class="hdn">시도별 접종 현황표 - 합계 및 시도(서울, 부산, 대구, 인천, 광주, 대전, 울산, 세종, 경기, 강원, 충북, 충남, 전북, 전남, 경북,
+                    경남, 제주)별 1차, 2차접종, 3차접종, 4차접종의 당일실적, 당일 누계로 구성</span></caption>
+            <colgroup>
+                <col style="width:13%;">
+                <col style="width:14.5%;">
+                <col style="width:14.5%;">
+                <col style="width:14.5%;">
+                <col style="width:14.5%;">
+                <col style="width:14.5%;">
+                <col style="width:14.5%;">
+                <col style="width:14.5%;">
+                <col style="width:14.5%;">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col" rowspan="2">구분</th>
+                    <th scope="col" colspan="2">1차접종</th>
+                    <th scope="col" colspan="2">2차접종</th>
+                    <th scope="col" colspan="2">3차접종</th>
+                    <th scope="col" colspan="2">4차접종</th>
+                </tr>
+                <tr id="day">
+                    <th scope="col">당일 실적</th>
+                    <th scope="col">당일 누계</th>
+                    <th scope="col">당일 실적</th>
+                    <th scope="col">당일 누계</th>
+                    <th scope="col">당일 실적</th>
+                    <th scope="col">당일 누계</th>
+                    <th scope="col">당일 실적</th>
+                    <th scope="col">당일 누계</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="sumline_cmn_top">
+                    <th scope="row">합계</th>
+                    <td class="d_num">
+
+                        380
+                    </td>
+                    <td class="d_num">
+
+                        45,101,931
+                    </td>
+                    <td class="d_num">
+
+                        336
+                    </td>
+                    <td class="d_num">
+
+                        44,664,114
+                    </td>
+                    <td class="d_num">
+
+                        2,305
+                    </td>
+                    <td class="d_num">
+
+                        33,539,624
+                    </td>
+                    <td class="d_num">
+
+                        32,088
+                    </td>
+                    <td class="d_num">
+
+                        7,000,206
+                    </td>
+
+                </tr>
+                <tr>
+                    <th scope="row">서울</th>
+                    <td class="ta_r">72</td>
+                    <td class="ta_r">8,340,082</td>
+                    <td class="ta_r">68</td>
+                    <td class="ta_r">8,260,864</td>
+                    <td class="ta_r">506</td>
+                    <td class="ta_r">6,049,408</td>
+                    <td class="ta_r">5,590</td>
+                    <td class="ta_r">1,165,344</td>
+                </tr>
+                <tr>
+                    <th scope="row">부산</th>
+                    <td class="ta_r">27</td>
+                    <td class="ta_r">2,879,699</td>
+                    <td class="ta_r">32</td>
+                    <td class="ta_r">2,850,704</td>
+                    <td class="ta_r">162</td>
+                    <td class="ta_r">2,132,424</td>
+                    <td class="ta_r">2,119</td>
+                    <td class="ta_r">470,307</td>
+                </tr>
+                <tr>
+                    <th scope="row">대구</th>
+                    <td class="ta_r">16</td>
+                    <td class="ta_r">2,019,190</td>
+                    <td class="ta_r">10</td>
+                    <td class="ta_r">1,996,236</td>
+                    <td class="ta_r">115</td>
+                    <td class="ta_r">1,401,388</td>
+                    <td class="ta_r">1,089</td>
+                    <td class="ta_r">248,607</td>
+                </tr>
+                <tr>
+                    <th scope="row">인천</th>
+                    <td class="ta_r">31</td>
+                    <td class="ta_r">2,569,978</td>
+                    <td class="ta_r">23</td>
+                    <td class="ta_r">2,545,413</td>
+                    <td class="ta_r">101</td>
+                    <td class="ta_r">1,905,155</td>
+                    <td class="ta_r">1,646</td>
+                    <td class="ta_r">376,120</td>
+                </tr>
+                <tr>
+                    <th scope="row">광주</th>
+                    <td class="ta_r">14</td>
+                    <td class="ta_r">1,262,601</td>
+                    <td class="ta_r">10</td>
+                    <td class="ta_r">1,250,884</td>
+                    <td class="ta_r">65</td>
+                    <td class="ta_r">967,102</td>
+                    <td class="ta_r">878</td>
+                    <td class="ta_r">223,270</td>
+                </tr>
+                <tr>
+                    <th scope="row">대전</th>
+                    <td class="ta_r">7</td>
+                    <td class="ta_r">1,246,114</td>
+                    <td class="ta_r">7</td>
+                    <td class="ta_r">1,233,821</td>
+                    <td class="ta_r">40</td>
+                    <td class="ta_r">906,534</td>
+                    <td class="ta_r">697</td>
+                    <td class="ta_r">183,814</td>
+                </tr>
+                <tr>
+                    <th scope="row">울산</th>
+                    <td class="ta_r">11</td>
+                    <td class="ta_r">968,521</td>
+                    <td class="ta_r">5</td>
+                    <td class="ta_r">959,122</td>
+                    <td class="ta_r">34</td>
+                    <td class="ta_r">718,891</td>
+                    <td class="ta_r">693</td>
+                    <td class="ta_r">116,354</td>
+                </tr>
+                <tr>
+                    <th scope="row">세종</th>
+                    <td class="ta_r">1</td>
+                    <td class="ta_r">298,472</td>
+                    <td class="ta_r">10</td>
+                    <td class="ta_r">294,683</td>
+                    <td class="ta_r">24</td>
+                    <td class="ta_r">208,809</td>
+                    <td class="ta_r">144</td>
+                    <td class="ta_r">32,883</td>
+                </tr>
+                <tr>
+                    <th scope="row">경기</th>
+                    <td class="ta_r">89</td>
+                    <td class="ta_r">11,824,636</td>
+                    <td class="ta_r">72</td>
+                    <td class="ta_r">11,708,670</td>
+                    <td class="ta_r">558</td>
+                    <td class="ta_r">8,665,465</td>
+                    <td class="ta_r">7,636</td>
+                    <td class="ta_r">1,593,433</td>
+                </tr>
+                <tr>
+                    <th scope="row">강원</th>
+                    <td class="ta_r">13</td>
+                    <td class="ta_r">1,349,914</td>
+                    <td class="ta_r">12</td>
+                    <td class="ta_r">1,338,549</td>
+                    <td class="ta_r">76</td>
+                    <td class="ta_r">1,060,855</td>
+                    <td class="ta_r">1,485</td>
+                    <td class="ta_r">256,885</td>
+                </tr>
+                <tr>
+                    <th scope="row">충북</th>
+                    <td class="ta_r">8</td>
+                    <td class="ta_r">1,428,978</td>
+                    <td class="ta_r">12</td>
+                    <td class="ta_r">1,416,284</td>
+                    <td class="ta_r">57</td>
+                    <td class="ta_r">1,104,364</td>
+                    <td class="ta_r">1,104</td>
+                    <td class="ta_r">266,133</td>
+                </tr>
+                <tr>
+                    <th scope="row">충남</th>
+                    <td class="ta_r">18</td>
+                    <td class="ta_r">1,899,206</td>
+                    <td class="ta_r">10</td>
+                    <td class="ta_r">1,881,501</td>
+                    <td class="ta_r">123</td>
+                    <td class="ta_r">1,474,098</td>
+                    <td class="ta_r">1,368</td>
+                    <td class="ta_r">350,490</td>
+                </tr>
+                <tr>
+                    <th scope="row">전북</th>
+                    <td class="ta_r">16</td>
+                    <td class="ta_r">1,593,582</td>
+                    <td class="ta_r">9</td>
+                    <td class="ta_r">1,580,310</td>
+                    <td class="ta_r">74</td>
+                    <td class="ta_r">1,283,047</td>
+                    <td class="ta_r">1,233</td>
+                    <td class="ta_r">358,499</td>
+                </tr>
+                <tr>
+                    <th scope="row">전남</th>
+                    <td class="ta_r">15</td>
+                    <td class="ta_r">1,654,438</td>
+                    <td class="ta_r">22</td>
+                    <td class="ta_r">1,639,708</td>
+                    <td class="ta_r">79</td>
+                    <td class="ta_r">1,361,968</td>
+                    <td class="ta_r">1,534</td>
+                    <td class="ta_r">430,993</td>
+                </tr>
+                <tr>
+                    <th scope="row">경북</th>
+                    <td class="ta_r">19</td>
+                    <td class="ta_r">2,292,966</td>
+                    <td class="ta_r">12</td>
+                    <td class="ta_r">2,268,988</td>
+                    <td class="ta_r">112</td>
+                    <td class="ta_r">1,722,900</td>
+                    <td class="ta_r">2,393</td>
+                    <td class="ta_r">377,199</td>
+                </tr>
+                <tr>
+                    <th scope="row">경남</th>
+                    <td class="ta_r">20</td>
+                    <td class="ta_r">2,883,094</td>
+                    <td class="ta_r">15</td>
+                    <td class="ta_r">2,853,681</td>
+                    <td class="ta_r">147</td>
+                    <td class="ta_r">2,139,985</td>
+                    <td class="ta_r">2,077</td>
+                    <td class="ta_r">462,725</td>
+                </tr>
+                <tr>
+                    <th scope="row">제주</th>
+                    <td class="ta_r">3</td>
+                    <td class="ta_r">590,460</td>
+                    <td class="ta_r">7</td>
+                    <td class="ta_r">584,696</td>
+                    <td class="ta_r">32</td>
+                    <td class="ta_r">437,231</td>
+                    <td class="ta_r">402</td>
+                    <td class="ta_r">87,150</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

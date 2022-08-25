@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>CSS 포지셔닝(sticky.html)</title>
+    <style>
+        div.box {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            background-color: bisque;
+        }
+
+        #fx {
+            position: sticky;
+            /* sticky는 스크롤 안에서 괜찮고, 페이지 범위 밖으로 넘어갈려고 하면 
+            fixed처럼 본인 위치를 고정으로 안움직이게 된다. */
+            top: 50px;
+            right: 5px;
+            width: 50px;
+            height: 50px;
+            background: #ff6a00;
+            /* display: none; 하면 화면에 요소가 있어도 안보이지롱,
+            그 녀석이 차지하던 공간도 같이 사라진당. */
+            /* visibility: hidden; 이건 그 공간은 있는데 요소만 안보이능거 */
+            /* opacity: 0.5; 1이면 원래값 0.몇 할 수록 투명도 올라감*/
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <div class="box">5</div>
+    <div class="box">6</div>
+    <div id="fx"></div>
+    <div class="box">7</div>
+    <div class="box">8</div>
+    <div class="box">9</div>
+    <div class="box">10</div>
+    <div class="box">11</div>
+    <div class="box">12</div>
+    <div class="box">13</div>
+    <div class="box">14</div>
+    <div class="box">15</div>
+
+</body>
+
+</html>

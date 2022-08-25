@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<title>CSS 포지셔닝</title>
+	<!-- P343 -->
+	<style>
+		#wrap {
+			position: relative;
+			/* static 기본값, 
+			relative + absolute는 감싸고 있는 부모요소 기준으로 위치 지정해준당 */
+			width: 300px;
+			height: 300px;
+			border: 1px solid #ccc;
+		}
+
+		.box {
+			position: absolute;
+			width: 50px;
+			height: 50px;
+			background: #0094ff;
+		}
+
+		#crd1 {
+			top: 0;
+			left: 0;
+		}
+
+		#crd2 {
+			top: 0;
+			right: 0;
+		}
+
+		#crd3 {
+			bottom: 0;
+			left: 0;
+		}
+
+		#crd4 {
+			bottom: 0;
+			right: 0;
+		}
+
+		#crd5 {
+			top: 100px;
+			left: 100px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="wrap">
+		<div class="box" id="crd1">crd1</div>
+		<div class="box" id="crd2">crd2</div>
+		<div class="box" id="crd3">crd3</div>
+		<div class="box" id="crd4">crd4</div>
+		<div class="box" id="crd5">crd5</div>
+	</div>
+</body>
+
+</html>
