@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/calendar.html</title>
+    <style>
+        th {
+            background-color: rgb(153, 185, 185);
+        }
+
+        td {
+            text-align: center;
+            width: 30px;
+            background-color: rgb(238, 244, 249);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3><span>8</span>월 달력출력하기.</h3>
+
+    <script>
+        // 해당월의 공란을 반환해주는 함수.
+        // 해당월의 마지막날짜를 반환해주는 함수.
+        function getEmptyCnt(month) {
+            switch (month) {
+                case 6: return 3;
+                case 7: return 5;
+                case 8: return 1;
+                case 9: return 4;
+                default: return 100;
+            }
+        }
+
+        function getLastDay(month) {
+            document.querySelector('span').textContent = month;
+            switch (month) {
+                case 6: return 30;
+                case 7: return 31;
+                case 8: return 31;
+                case 9: return 30;
+                default: return 100;
+            }
+        }
+
+        let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thr', 'Fri', 'Sat'];
+
+        // 달력그리기 시작부분.
+        let cal = '<table border=1>';
+
+        // 요일을 출력하는 부분.
+        cal += '<tr>';
+        for (let d of days) {
+            cal += `<th>${d}</th>`;
+        }
+        cal += '</tr>';
+
+        cal += '<tr>';
+        // 1일 위치지정. 마지막날의 값을 반환.
+        let empty = getEmptyCnt(8); //getEmptyCnt(해당월의 공란);
+        let lastDay = getLastDay(8); //getLastDay(월);
+
+        for (let f = 0; f < empty; f++)
+            cal += '<td></td>';
+
+        for (let day = 1; day <= lastDay; day++) {
+
+            // 토요일은 파란색 배경, 일요일은 빨간색 배경
+            if ((empty + day) % 7 == 1) {
+                cal += `<td style="background-color: red; color: white;">${day}</td>`;
+            } else if ((empty + day) % 7 == 0) {
+                cal += `<td style="background-color: blue; color: white;">${day}</td>`;
+                cal += '</tr><tr>';
+            } else {
+                cal += `<td>${day}</td>`;
+            }
+        }
+        cal += '</tr>';
+        cal += '</table>';
+
+        document.write(cal);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript/basic.html</title>
+</head>
+
+<body>
+    <!-- 자바스크립트는 script안에 해줘야함-->
+    <h3>Hello, World</h3>
+    <script>
+        // 문자열 "" ,'' 둘다됨
+        // {name: 'Hong', age:20} 이부분 리터럴
+        let person = {
+            name: 'Hong',
+            age: 20,
+            showInfo: function () {
+                console.log('이름은: ' + this.name + " 나이는: " + this.age);
+            }
+        }
+        person.showInfo();
+        //  person.showInfo(); = person에있는 showInfo()를 실행하겠다
+        //object에 있는 함수: 메소드.
+
+        document.write('<h1>Hello, World</h1>');
+        //'',"" 안에서 태그도 적용 가능하당
+
+        // window.alert('경고구문입니다!!');
+        // 윈도우오브젝트가 가지는 alert이라는 기능
+
+        let fruits = ['사과', "바나나", '배', '복숭아', "수박"];
+        // let str = '<ul><li>사과</li><li>바나나</li></ul>';
+        // document.write(str);
+        // = document.write('<ul><li>사과</li><li>바나나</li></ul>') 위 두줄이랑 같은의미;
+
+        //str에 누적시키기
+        let str = '<ul>';
+        // for(let i=0; i<fruits.length; i++){  
+        //     // i<fruits.length = fruits이가지고있는 length크기많큼 반복하세요
+        //     str += '<li>' + fruits[i] + "</li>";
+        //     // + 연산자: concat() / 문자열 연산자...?
+        // }
+
+         //확장 for = for ~ of~
+        // for (let fruit of fruits) = let 배열담아주는곳 of 배열
+        for (let fruit of fruits) {
+            str += '<li>' + fruits + '</li>';
+        }
+        str += '</ul>';
+        document.write(str);
+
+        //새로운 member변수 선언
+        let member = {
+            userId: 'back',
+            userName: '백진희',
+            point: 550
+        }
+        console.log(member.userId); //'back'
+        console.log(member['userName']); //'백진희'
+        let field = 'point';
+        console.log(member[field]); //550
+
+
+        //object의 각각의 속성을 전체 읽어오는 반복. = prop in
+        for (let prop in member) {
+            console.log('속성: ' + prop + ' 값: ' + member[prop]);
+        }
+    </script>
+</body>
+
+</html>
