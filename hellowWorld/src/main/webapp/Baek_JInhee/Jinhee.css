@@ -1,0 +1,67 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.container {
+    /* width: 1000px;
+    justify-content: center; */
+    width: 40%;
+    margin: 5px auto;
+}
+.nav2 {
+    height: 60px;
+    background-color: pink;
+    position: relative;
+    top: -15px;
+}
+.nav2 ul {
+    list-style-type: none;
+    margin-left: 20%;
+}
+.nav2 ul li {
+    display: inline-block;
+    padding-top: 18px;
+}
+.nav2 ul li a {
+    color: black;
+    font-size: 1.2em;
+    text-decoration: none;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.nav2 ul li a:hover{
+    color: rgb(255, 36, 138);
+}
+.Lsidebar{
+    width: 200px;
+    height: 700px;
+    margin: auto;
+    float: left;
+    padding: 5px;
+    background-color: lavenderblush;
+}
+.Welcome {
+    width: 600px;
+    height: 700px;
+    float: left;
+    padding: 3px;
+    margin: auto;
+}
+form{
+   border: dotted white;
+}
+.Rsidebar{
+    width: 200px;
+    height: 700px;
+    margin: auto;
+    float: right;
+    padding: 5px;
+    background-color: lavenderblush;
+}
+footer {
+    clear: both; /* float해제 */
+    padding: 5px 0;
+    color: midnightblue;
+    text-align: center;
+    background-color: antiquewhite;
+}

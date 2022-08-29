@@ -5,7 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./js/loop.js"></script>
+    <script src="./js/for_test2.js"></script>
+    <!-- <script src="./js/for_test.js"></script> -->
+    <!-- <script src="./js/function_param.js"></script> -->
+    <!-- <script src="./js/variable_obj.js"></script> -->
+    <!-- <script src="./js/variable_ref.js"></script> -->
+    <!-- <script src="./js/variable.js"></script> -->
+    <!-- <script src="./js/loop.js"></script> -->
     <!-- <script src="./js/foreach.js"></script> -->
     <!-- <script src="./js/conditions.js"></script> -->
     <!-- <title>javascript/default.html</title> -->
@@ -17,28 +23,31 @@
 </head>
 
 <body>
-    <table border="1">
-        <tr style="background-color: pink;">
-            <td>user1</td>
-            <td>백제니</td>
-            <td>100</td>
-        </tr>
-        <tr>
-            <td>user2</td>
-            <td>노지수</td>
-            <td>100</td>
-        </tr>
-        <tr>
-            <td>user3</td>
-            <td>김리사</td>
-            <td>100</td>
-        </tr>
-        <tr>
-            <td>user4</td>
-            <td>이로제</td>
-            <td>0</td>
-        </tr>
-    </table>
+    <!-- html에서 읽어오는 방법 -->
+    나이<input type="number" name="num1" id="num1" value="30"> + <br>
+        <input type="number" name="num2" id="num2" value="70"> = <br>
+        <input type="number" name="result" id="result"> <br>
+        <button onclick="calc()">계산</button>
+    <script>
+        //자스에서 읽어오는 방법
+        // let val = document.querySelector('input[type="number"]').value;
+        // let val2 = document.querySelector('#num2').value;
+        // console.log(typeof val, val); //숫자타입으로 보여지지만 문자타입임.
+        // console.log(parseInt(val) + parseInt(val2)); // (*%-제외) 더하기인 경우 parseInt + 연산 , 그냥하면 문자열+문자열 일케나옴
+        
+        function calc(){
+        //num1, num2 합 결과 result.
+        let num1 = document.querySelector('#num1').value;
+        let num2 = document.querySelector('#num2').value;
+        let result = parseInt(num1) + parseInt(num2);
+        document.querySelector('#result').value = result;
+
+        //비워주기
+        document.querySelector('#num1').value = '';
+        document.querySelector('#num2').value = '';
+        document.querySelector('#num1').focus();
+        }
+    </script>
 </body>
 
 </html>

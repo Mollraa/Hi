@@ -8,13 +8,13 @@
     <title>javascript/calendar.html</title>
     <style>
         th {
-            background-color: rgb(153, 185, 185);
+            background-color: rgb(234, 208, 250);
         }
 
         td {
             text-align: center;
             width: 30px;
-            background-color: rgb(238, 244, 249);
+            background-color: rgb(253, 255, 153);
         }
     </style>
 </head>
@@ -69,11 +69,11 @@
 
         for (let day = 1; day <= lastDay; day++) {
 
-            // 토요일은 파란색 배경, 일요일은 빨간색 배경
+            // 토요일은 skyblue색 배경, 일요일은 pink색 배경
             if ((empty + day) % 7 == 1) {
-                cal += `<td style="background-color: red; color: white;">${day}</td>`;
+                cal += `<td style="background-color: pink; color: white;">${day}</td>`;
             } else if ((empty + day) % 7 == 0) {
-                cal += `<td style="background-color: blue; color: white;">${day}</td>`;
+                cal += `<td style="background-color: skyblue; color: white;">${day}</td>`;
                 cal += '</tr><tr>';
             } else {
                 cal += `<td>${day}</td>`;

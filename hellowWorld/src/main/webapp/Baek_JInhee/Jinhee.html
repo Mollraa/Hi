@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JInhee</title>
+    <link rel="stylesheet" href="Jinhee.css">
+</head>
+
+<body>
+    <div id=container>
+        <header>
+            <h1>Header영역</h1>
+            <nav class="nav1">
+                <ul>
+                    <ol><a href="#">백진희의 페이지에 온 것을 환영합니다.</a></ol>
+                </ul>
+            </nav>
+            <nav class="nav2">
+                <ul>
+                    <li><a href="#">첫번째 메인메뉴</a></li>
+                    <li><a href="#">두번째 메인메뉴</a></li>
+                    <li><a href="#">세번째 메인메뉴</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <aside id="sidebar" class="Lsidebar">
+            <h3>좌측 사이드</h3>
+            <p>좌측 영역 정의 내립니다.</p>
+            <p>좌측 영역 정의 내립니다.</p>
+            <p>좌측 영역 정의 내립니다.</p>
+        </aside>
+
+        <section class="Welcome">
+            <h2>회원가입 영역입니다.</h2>
+            <form action="">
+                <fieldset>
+                    <legend> step1 : 로그인 정보 </legend>
+                    <ul>
+                        <li>
+                            <label for="id">계정아이디</label>
+                            <input type="text" name="id">
+                            <button type="button"> 중복확인 </button><br>
+                        </li>
+                        <li><label for="passwd">비밀번호 </label>
+                            <input type="password" name="passwd" id="passwd">
+                        </li>
+                        <li><label for="passwd2">비밀번호 확인</label>
+                            <input type="password" name="parrwd2" id="passwd2">
+                        </li>
+                    </ul>
+                </fieldset>
+
+                <fieldset>
+                    <legend> step2 : 개인 정보 </legend>
+                    <ul>
+                        <li><label for="user-name">이름</label>
+                            <input type="text" name="name" id="user-name" placeholder=" 5자 미만 공백없이" required>
+                        </li>
+
+                        <li>
+                            <label for="mail">이메일 계정</label>
+                            <input type="email" name="mail" id="mail" placeholder="abc@naver.com">
+                        </li>
+                        <li>
+                            <label for="phone">전화번호</label>
+                            <input type="tel" name="phone" id="phone">
+                        </li>
+                    </ul>
+                </fieldset>
+                
+                <fieldset>
+                    <input type="submit" value="회원 가입">
+                    <input type="submit" value="정보 수정">
+                </fieldset>
+            </form>
+        </section>
+
+        <aside id="sidebar"class="Rsidebar">
+            <h3>우측 사이드</h3>
+            <p>우측 영역 정의 내립니다.</p>
+            <p>우측 영역 정의 내립니다.</p>
+            <p>우측 영역 정의 내립니다.</p>
+        </aside>
+
+        <footer>
+			<p>푸터영역 입니다.</p>
+		</footer>
+    </div>
+
+</body>
+
+</html>
