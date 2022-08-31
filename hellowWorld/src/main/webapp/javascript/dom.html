@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .red {
+            color: #ff0000;
+        }
+
+        .blue {
+            color: #0000ff;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Cities</h1>
+        <ul>
+            <li id="one" class="red">Seoul</li>
+            <li id="two" class="red">London</li>
+            <li id="three" class="red">Newyork</li>
+            <li id="four">Tokyo</li>
+        </ul>
+        <ul>
+            <li>apple</li>
+            <li>banana</li>
+            <li>cherry</li>
+        </ul>
+    </div>
+
+    <script>
+        // getElementById , getElementsByTagName ,
+        // 
+
+        //id값이 one인 녀석을 데려와서 어쩌겠다~
+        let one = document.getElementById('one');
+        one.style.backgroundColor = 'pink';
+        one.style.color = 'blue';
+        one.innerHTML = '서울';
+        // console.log(one);
+        // console.log(one.innerHTML);
+        console.log(one.getAttribute('class'));
+
+        //ul태그 .가져오기 (document.getElementsByTagName)
+        let uls = document.getElementsByTagName('ul'); //ul태그를 가져와서 uls에 담아줬당
+        // console.log(uls); // 모르면 일단 확인하쟈
+        // console.log(uls[0].style.listStyleType = 'none');
+        console.log(uls[0].style.listStyleType = 'circle');
+        console.log(uls[1].style.listStyleType = 'circle');
+
+
+        //<li>NewDeli</li> 새로운 요소 추가.. ☆ 꼭 기억해..☆
+        let newdeli = document.createElement('li'); //list태그를 만들겠다. <li></li>
+        newdeli.innerText = 'NewDeli';
+        newdeli.setAttribute('class', 'red');
+        uls[0].appendChild(newdeli);
+        // let newdeli = document.createElement('li');
+        // newdeli.innerText = 'NewDeli';
+        // newdeli.setAttribute('class', 'red');
+        // uls[0].appendChild(newdeli);
+
+        //삭제 (Tokyo)
+        document.getElementById('four').remove();
+
+        //NewDeli : 컬러 (빨간색)
+        let list = document.getElementsByTagName('li'); //일단 찾아온다.
+        list[3].style.color = 'red'; // 빨강 적용해 준다.
+
+        for (let i = 0; i < list.length; i++) {
+            //on~어쩌구는 이벤트관련속성!   
+            list[i].onclick = function () {
+                window.alert(this.innerHTML);
+            }
+        }
+
+        // class명으로 요소선택!
+        let reds = document.getElementsByClassName('red');
+        for (let i = 0; i < reds.length; i++) {
+            reds[i].onmouseover = function () {
+                this.style.fontWeight = 'bold';
+                this.style.fontSize = '20px';
+            }
+            //커졋다 돌아오는 구문
+            reds[i].onmouseout= function () {
+                this.style.fontWeight = '100';
+                this.style.fontSize = '16px';
+            }
+        }
+    </script>
+
+</body>
+
+</html>

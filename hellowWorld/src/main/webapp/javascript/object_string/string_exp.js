@@ -22,7 +22,23 @@ console.log('ABC'.toLowerCase()); // 소문자로 변환
 
 //숙제
 //hhmiss = 시분초를 09:08:07 , 12:34:07
-Date.prototype.hhmiss = function(){
+//1.
+Date.prototype.hhmiss = () => {
+    if (now.getHours() >= 12) {
+        // let s = now.getHours() - 12
 
+        return `${(now.getHours()-12)<10? '0'+ (now.getHours() - 12):(now.getHours() - 12)}시` +
+            `${now.getMinutes()<10? '0'+ now.getMinutes():now.getMinutes()}분` +
+            `${now.getSeconds()<10? '0'+ now.getSeconds():now.getSeconds()}초`;
+    }
+    return `${now.getHours()<10? '0'+ now.getHours():now.getHours()}시` +
+        `${now.getMinutes()<10? '0'+ now.getMinutes():now.getMinutes()}분` +
+        `${now.getSeconds()<10? '0'+ now.getSeconds():now.getSeconds()}초`;
 }
-console.log(now.hhmiss);
+console.log(now.hhmiss());
+//2.
+Date.prototype.hhmiss = function () {
+    // 09:08:07
+    console.log(('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2) + ':' + ('0' + now.getSeconds()).slice(-2));
+}
+now.hhmiss();
