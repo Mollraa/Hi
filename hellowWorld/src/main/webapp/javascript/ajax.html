@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ajax.html</title>
+</head>
+<body>
+	<div id="show"></div>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>아이디</th>
+				<th>이름</th>
+				<th>비밀번호</th>
+			</tr>
+		</thead>
+
+		<tbody id="list">
+
+		</tbody>
+
+	</table>
+	<script>
+        //서버상에 있는 html, jsp, 서블릿, text
+        let xhtp = new XMLHttpRequest();  //서버상의 어떤 페이지든 부르면 텍스트 형식으로 불러줌
+        xhtp.open('get','../memberList'); 
+        xhtp.send(); //send 메소드 : 서버요청
+        xhtp.onload = function(){
+           let data = JSON.parse(xhtp.response);
+           console.log(data);
+           let list = document.getElementById('list');
+           //서버의 json 파일 => JSON.parse() -> 페이지 출력. 
+           data.forEach(data => {
+              
+           let tr = document.createElement('tr');
+           
+           let td1 = document.createElement('td');
+           let txt1 = document.createTextNode(data.memberId);
+           td1.appendChild(txt1); //id
+           
+           let td2 = document.createElement('td');
+           let txt2 = document.createTextNode(data.memberName);
+           td2.appendChild(txt2); //first name
+           
+           let td3 = document.createElement('td');
+           let txt3 = document.createTextNode(data.memberPw);
+           td3.appendChild(txt3); //email 비번
+           
+           let td4 = document.createElement('td');
+           let btn = document.createElement('button');
+           btn.addEventListener('click', function() {
+        	   let delAjax = new XMLHttpRequest();
+        	   delAjax.open('post', '../memberList');
+        	   delAjax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        	   delAjax.send('del_id=' + this.parentElement.parentElement.firstElementChild.textContent);
+        	   delAjax.onload = function(e) {
+        		   let result = delAjax.responseText;
+        		   console.log(result);
+        		   if(result == 'success'){
+        			   btn.parentElement.parentElement.remove();
+        		   } else {
+        			   alert('처리중 에러발생.');
+        		   }
+        	   }
+           })
+           
+           let txt4 = document.createTextNode('삭제');
+           btn.append(txt4);
+           td4.append(btn);
+           
+           
+           tr.append(td1, td2, td3, td4);
+           list.append(tr);
+           })
+        }
+    </script>
+</body>
+</html>
