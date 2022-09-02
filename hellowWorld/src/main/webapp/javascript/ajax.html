@@ -1,80 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ajax.html</title>
 </head>
+
 <body>
-	<div id="show"></div>
-	<table border="1">
-		<thead>
-			<tr>
-				<th>아이디</th>
-				<th>이름</th>
-				<th>비밀번호</th>
-			</tr>
-		</thead>
+	<h3>회원입력</h3>
+	<label for="mem_id">회원아이디</label>
+	<input type="text" id=mem_id>
+	<br>
 
-		<tbody id="list">
+	<label for="mem_pw">회원비밀번호</label>
+	<input type="text" id=mem_pw>
+	<br>
 
-		</tbody>
+	<label for="mem_nm">회원이름</label>
+	<input type="text" id=mem_nm>
+	<br>
 
-	</table>
-	<script>
-        //서버상에 있는 html, jsp, 서블릿, text
-        let xhtp = new XMLHttpRequest();  //서버상의 어떤 페이지든 부르면 텍스트 형식으로 불러줌
-        xhtp.open('get','../memberList'); 
-        xhtp.send(); //send 메소드 : 서버요청
-        xhtp.onload = function(){
-           let data = JSON.parse(xhtp.response);
-           console.log(data);
-           let list = document.getElementById('list');
-           //서버의 json 파일 => JSON.parse() -> 페이지 출력. 
-           data.forEach(data => {
-              
-           let tr = document.createElement('tr');
-           
-           let td1 = document.createElement('td');
-           let txt1 = document.createTextNode(data.memberId);
-           td1.appendChild(txt1); //id
-           
-           let td2 = document.createElement('td');
-           let txt2 = document.createTextNode(data.memberName);
-           td2.appendChild(txt2); //first name
-           
-           let td3 = document.createElement('td');
-           let txt3 = document.createTextNode(data.memberPw);
-           td3.appendChild(txt3); //email 비번
-           
-           let td4 = document.createElement('td');
-           let btn = document.createElement('button');
-           btn.addEventListener('click', function() {
-        	   let delAjax = new XMLHttpRequest();
-        	   delAjax.open('post', '../memberList');
-        	   delAjax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        	   delAjax.send('del_id=' + this.parentElement.parentElement.firstElementChild.textContent);
-        	   delAjax.onload = function(e) {
-        		   let result = delAjax.responseText;
-        		   console.log(result);
-        		   if(result == 'success'){
-        			   btn.parentElement.parentElement.remove();
-        		   } else {
-        			   alert('처리중 에러발생.');
-        		   }
-        	   }
-           })
-           
-           let txt4 = document.createTextNode('삭제');
-           btn.append(txt4);
-           td4.append(btn);
-           
-           
-           tr.append(td1, td2, td3, td4);
-           list.append(tr);
-           })
-        }
-    </script>
+	<button id="addBtn">회원동록</button>
+	<br>
+
+	<div id="show">
+		<table border="1">
+			<thead>
+				<tr>
+					<th>아이디</th>
+					<th>이름</th>
+					<th>비밀번호</th>
+					<th>삭제</th>
+					<th>수정</th>
+				</tr>
+			</thead>
+			</div>
+			
+				<tbody id="list">
+				</tbody>
+
+			<table id="template" style="display: none;">
+				<tbody>
+					<tr>
+						<!-- textNOde 제거하려고 /td,td붙혀줌 -->
+						<td id="id">user1
+						</td><td><input type="text" id="name" value="name1">
+						</td><td><input type="number" id="passwd" value="pass1">
+						</td><td><button disabled>삭제</button>
+						</td><td><button onclick="modifyMember(event)">변경</button></td>
+					</tr>
+				</tbody>
+			</table>
+
+		</table>
+		<script>
+		// 등록버튼 클릭.
+		let addBtn = document.getElementById('addBtn');
+		addBtn.addEventListener('click', addMemberFnc);
+
+
+		//서버상에 있는 html, jsp, 서블릿, text
+		let xhtp = new XMLHttpRequest(); //서버상의 어떤 페이지든 부르면 텍스트 형식으로 불러줌
+		xhtp.open('get', '../memberList');
+		xhtp.send(); //send 메소드 : 서버요청
+		xhtp.onload = function () {
+			console.log(xhtp.response);
+			let data = JSON.parse(xhtp.response); //객체데이터
+			let list = document.getElementById('list');
+			//서버의 json 파일 => JSON.parse() -> 페이지 출력. 
+			data.forEach(data => {
+				let tr = makeTr(data);
+				list.append(tr);
+			})
+		}
+
+		function makeTr(data) {
+			//tr생성하는 부분.
+			let tr = document.createElement('tr');
+
+			let td1 = document.createElement('td');
+			let txt1 = document.createTextNode(data.memberId);
+			td1.appendChild(txt1); //id
+
+			let td2 = document.createElement('td');
+			let txt2 = document.createTextNode(data.memberName);
+			td2.appendChild(txt2); //first name
+
+			let td3 = document.createElement('td');
+			let txt3 = document.createTextNode(data.memberPw);
+			td3.appendChild(txt3); //email 비번
+
+			let td4 = document.createElement('td');
+			let btn = document.createElement('button');
+			btn.addEventListener('click', function () {
+				let delAjax = new XMLHttpRequest();
+				delAjax.open('post', '../memberList');
+				delAjax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+				delAjax.send('del_id=' + this.parentElement.parentElement.firstElementChild.textContent);
+				delAjax.onload = function (e) {
+					console.log(delAjax.responseText);
+					let result = delAjax.responseText;
+					console.log(result);
+					if (result == 'success') {
+						btn.parentElement.parentElement.remove();
+					} else {
+						alert('처리중 에러발생.');
+					}
+				}
+			})
+
+			let txt4 = document.createTextNode('삭제');
+			btn.append(txt4);
+			td4.append(btn);
+			
+			// 변경 (수정)버튼.
+			let td5 = document.createElement('td');
+			let btn2 = document.createElement('button');
+			let txt5 = document.createTextNode('수정');
+			btn2.addEventListener('click', function () {
+				//수정불가 -> 수정화면으로 변경
+				let originTr = btn2.parentElement.parentElement;
+				let replaceTr = document.querySelector('#template>tbody>tr').cloneNode(true);
+				
+				console.log(originTr);
+				
+				let originChild = originTr.children;  //오리진 자식 다 가져옴
+				let replaceChild = replaceTr.children; //리플에리스 자식 다 가져옴
+				// 해당 위치의 아이들만 바꿔주겠다
+				replaceChild[0].textContent = originChild[0].textContent;
+				replaceChild[1].firstElementChild.value = originChild[1].textContent;
+				replaceChild[2].firstElementChild.value = originChild[2].textContent;
+				
+				
+				//★★★★★★★★★★★★★★★★★
+				// 변경처리 후에 해당 id값으로 tr을 찾아오도록.
+				replaceTr.setAttribute('id', 'find_'+ originChild[0].textContent);
+				
+				// = 
+				//유저아이디 변경부분.
+				//repalceTr.firstElementChild.textContent = originTr.firstElementChild.textContent;
+				//유저이름 변경부분.
+				//repalceTr.firstElementChild.nextSibling.firstElementChild.value = 
+					//originTr.firstElementChild.nextSibling.textContent;
+				//비밀번호 부분
+				//repalceTr.firstElementChild.nextSibling.nextSibling.firstElementChild.value = 
+					//originTr.firstElementChild.nextSibling.nextSibling.textContent;
+				
+				console.log(replaceTr);
+				let parent = document.getElementById('list');
+				parent.replaceChild(replaceTr, originTr);
+				
+			}) 
+			btn2.append(txt5);
+			td5.append(btn2);
+
+
+			tr.append(td1, td2, td3, td4, td5);
+
+			return tr;
+		}
+
+		// 등록버튼 클릭 실행 콜백함수
+		function addMemberFnc() {
+			// 사용자 값을 읽어와야함. / protected void doPost
+			let id = document.getElementById('mem_id').value; //input값 value.
+			let ps = document.getElementById('mem_pw').value;
+			let nm = document.getElementById('mem_nm').value;
+			let param = 'mid=' + id + '&mpw=' + ps + '&mnm=' + nm;
+
+			// 등록하는 서블릿 호출.
+			let addAjx = new XMLHttpRequest();
+			addAjx.open('post', '../addMemberServlet'); //post방식은 몸통 머리 분리?해줘야함
+			addAjx.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+			addAjx.send(param);
+			addAjx.onload = addMemberCallback; // 콜백함수 따로 생성.
+		}
+
+		// 등록하는 ajax 콜백함수.
+		function addMemberCallback() {
+			let result = JSON.parse(this.responseText);
+			console.log(result);
+			if (result.retCode == 'success') {
+				let list = document.getElementById('list');
+				list.append(makeTr(result));
+			} else if (result.retCode == 'fail') {
+				alert('처리중 에러발생.')
+			}
+		}
+		
+		// 데이터 변경함수.
+		// modifyMember함수가 실행 될 때 , 매개값으로 event실행~
+		function modifyMember(e) {
+			let tr = e.target.parentElement.parentElement;
+			let child = tr.children; // [td, td, td, td, td]
+			//console.log(child);
+			let id = child[0].textContent;
+			let nm = child[1].firstElementChild.value;
+			let pw = child[2].firstElementChild.value;
+			//console.log(id,nm,pw)
+			let param = 'mid='+id+ '&mnm='+nm+ '&mpw='+pw; //서블릿쪽에서 파라미터이름으로 써짐
+			
+			//ajax 호출을 위한
+			let updAjx = new XMLHttpRequest();
+			updAjx.open('post','../updateMemberServlet');
+			updAjx.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+			updAjx.send(param);
+			updAjx.onload = updateMemberCallBack;
+			
+		}
+		//updateMemberCallBack = 수정처리 콜백함수.
+		function updateMemberCallBack(){
+			
+			let result = JSON.parse(this.responseText);
+			if(result.retCode == 'success') {
+				alert('성공 !!')
+				
+				//수정한 후 화면변경
+				let newTr = makeTr(result);
+				let oldTr = document.getElementById('find_' + result.memberId);
+				document.getElementById('list').replaceChild(newTr, oldTr);
+				
+			} else if (result.retCode == 'fail') {
+				alert('처리중 에러발생 !!')
+			}
+		}
+		
+		
+	</script>
 </body>
+
 </html>

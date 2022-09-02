@@ -120,4 +120,27 @@ public class MemberManage extends DAO {
 		return false; // 정상처리 안된 경우.
 	}
 
+	// 수정
+	public boolean updateMember(Member member) {
+		conn();
+		String sql = "update bankmember set member_pw = ?, member_name = ? where member_id = ?";
+		//, member_phone = ?
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getMemberPw());
+			pstmt.setString(2, member.getMemberName());
+			pstmt.setString(3, member.getMemberId());
+			
+			int r = pstmt.executeUpdate();
+			if (r > 0) {
+				return true; // 정상적으로 한건 삭제.
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		} return false; // 정상처리 안된 경우.
+
+	}
 }

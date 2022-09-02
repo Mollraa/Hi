@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="EUC-KR">
+    <title>data_go.html</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    table {
+        width: 70%;
+        float: left;
+        border: 1px solid lightpink;
+    }
+
+    div#datailInfo {
+        width: 30%;
+        float: left;
+        border: 1px solid rgb(253, 255, 161);
+        height: 300px;
+    }
+</style>
+
+<body>
+    <h3>예방접종센터 조회</h3>
+    <label for="center">조회대상입력: <input type="text" name="center" id="center"></label>
+    <button id="searchBtn">조회</button><br>
+
+    <label for="">시도리스트
+        <select id="sido">
+            <option>선택</option>
+        </select>
+    </label>
+    <br>
+    <br>
+    <table border=1>
+        <thead>
+            <th>시설아이디</th>
+            <th>센터명</th>
+            <th>시도</th>
+            <th>시군수</th>
+            <th>연락처</th>
+            <th>주소</th>
+        </thead>
+        <tbody id="list"></tbody>
+    </table>
+
+    <div id="datailInfo">
+        <ul>
+            <li>org:<span>국립중앙의료원</span></li>
+            <li>lat:<span>12.34567</span></li>
+            <li>lng:<span>123.2324</span></li>
+
+        </ul>
+    </div>
+
+    <script>
+        //조회 클릭.
+        document.getElementById('searchBtn').addEventListener('click', searchCenterFnc);
+
+        //리스트선택.
+        document.getElementById('sido').addEventListener('change', searchCenterFnc);
+
+        //화면 초기화.
+        let gdata;
+
+        //시도리스트 뿌려주기 위한.
+        let sidoData = [];
+        let chartData = []; //[['서울특별시, 3'], ['대전광역시, 2'],['경기도, 3'],[]]...
+
+        let req_url =
+            `https://api.odcloud.kr/api/15077586/v1/centers?page=1&perPage=284&returnType=json&serviceKey=pwT5aIYH0okdphV9RxVSf3m6lobtHRnodRd2HTeyudlgzibqhw0QMG8LHQd38SnIk8OaK4Ec5%2FR2ylh7Wzchug%3D%3D`
+        let xhtp = new XMLHttpRequest();
+        xhtp.open('get', req_url);
+        xhtp.send();
+        xhtp.onload = pageLoadCallBack;
+
+        function pageLoadCallBack() {
+            let result = JSON.parse(this.responseText);
+            console.log(result);
+
+            let tbody = document.getElementById('list');
+
+
+            // 결과 중에서 result.data가 필요한 실데이터.
+            let data = result.data;
+            gdata = data;
+
+            let sidoData = []; //시도 리스트 뿌려주기 위한[]
+
+            data.forEach((center, idx) => {
+                    //초기화면
+                    if (idx < 10) //284개 너무많아서 10개만 띄워놈
+                        tbody.append(makeTr(center));
+
+                    //시도데이터 구분
+                    // -1 = 시도데이터에 값이 없을때 넣어줘야하기 때문EG
+                    if (sidoData.indexOf(center.sido) == -1) {
+                        sidoData.push(center.sido);
+                    }
+
+                    // 차트에 들어갈 데이터 구분. /숙제 event해서 보이게하깅~>_<
+                    if (chartData.some(ary => ary[0] == center.sido)) {
+                            ary[1] += 1;
+                        } else {
+                            chartData.push([center.sido, 1])
+
+                        }
+                        // {
+                        //     if (ary[0] == center.sido) {
+                        //         //기존시도이면 추가1.
+                        //         let curCnt = ary[1];
+                        //         ary[0] = ++curCnt;
+
+                        //     } else {
+                        //         //신규 시도이면 1 등록.
+                        //     }
+                    }); console.log(chartData)
+
+
+                //select에 option을 달아준다.
+                let sel = document.getElementById('sido'); sidoData.forEach(sido => {
+                    let opt = document.createElement('option');
+                    opt.textContent = sido;
+                    opt.value = sido;
+                    sel.append(opt);
+                })
+            }
+
+            function makeTr(center) {
+                let tr = document.createElement('tr');
+                let infos = ['id', 'centerName', 'sido', 'sigungu', 'phoneNumber', 'address'];
+                infos.forEach(info => {
+                    let td = document.createElement('td');
+                    let txt = document.createTextNode(center[info]);
+                    td.append(txt);
+                    tr.append(td);
+                })
+                return tr;
+            }
+
+
+            function searchCenterFnc(e) {
+                console.log(e.target.nodeName);
+                let sido;
+                if (e.target.nodeName == 'BUTTON') {
+                    sido = document.getElementById('center').value; //조회하려는 시도.
+                } else if (e.target.nodeName == 'SELECT') {
+                    sido = e.target.value;
+                }
+
+                let tbody = document.getElementById('list');
+
+                // 이미 있던 tr 삭제.
+                document.querySelectorAll('#list>tr').forEach(tr => tr.remove());
+
+                gdata.forEach(center => {
+
+                    if (center.sido.startsWith(sido)) {
+                        tbody.append(makeTr(center)); // 조회된 시도.
+                    }
+                });
+
+            }
+    </script>
+</body>
+
+</html>

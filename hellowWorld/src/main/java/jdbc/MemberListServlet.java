@@ -26,10 +26,7 @@ public class MemberListServlet extends HttpServlet {
       //json 데이터 생성.
       response.setCharacterEncoding("utf-8"); //한글처리
       response.setContentType("text/json;charset=utf-8");
-      
-      
-      
-      
+   
       MemberManage dao = MemberManage.getInstance();
       List<Member> list = dao.getMembers();
       //[{"memberId":"user1","memberPw":1234, "memberName":"홍길동","memberRole":1}] //json 포맷

@@ -44,6 +44,11 @@ public class Member {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	@Override
+	public String toString() {
+		return "Member [memberId=" + memberId + ", memberPw=" + memberPw + ", memberName=" + memberName + ", accountId="
+				+ accountId + ", role=" + role + "]";
+	}
 	
 	
 }
