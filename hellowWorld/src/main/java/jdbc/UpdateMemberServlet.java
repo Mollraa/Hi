@@ -41,7 +41,7 @@ public class UpdateMemberServlet extends HttpServlet {
 		MemberManage dao = MemberManage.getInstance();
 		// 정상적으로 처리되면 retCode => success or retCode => fail
 		if (dao.updateMember(mem)) {
-			String json = "{\"retCode\": \"success\", \"memberId\" : \""+id+"\", \"memberPw\" : "+pw+", \"memberName\" : \""+nm+"\"}";
+			String json = "{\"retCode\": \"success\", \"memberId\" : \""+id+"\", \"memberPw\" : \""+pw+"\", \"memberName\" : \""+nm+"\"}";
 			response.getWriter().print(json); // HttpServletResponse response = 응답정보 반환
 		} else {
 			String json = "{\"retCode\": \"fail\"}";
@@ -49,3 +49,4 @@ public class UpdateMemberServlet extends HttpServlet {
 		}
 	}
 }
+

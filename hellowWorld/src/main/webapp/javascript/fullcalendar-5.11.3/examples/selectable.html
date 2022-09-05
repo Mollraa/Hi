@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<link href='../lib/main.css' rel='stylesheet' />
+<script src='../lib/main.js'></script>
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    //Ajax : 비동기방식처리.
+    fetch('../../../myCalendar') //1.서버에 요청
+    
+    //3.  비동기방식처리. => 그려줄방식 보여줌
+    .then(result => result.json()) //then(콜백함수) => promise객체반환.
+    .then(showResultCallBack)
+    //.then(result => console.log(result))   //정상실행 (간편한 화살표함수를 이용하쟈!) 1)
+    //.then(result => { 2)
+    	//console.log(result);
+    	//myEvents = result;
+    //})
+    .catch(error => console.error(error)); //에러날때
+    
+    
+    function showResultCallBack(result) {
+    var calendarEl = document.getElementById('calendar');
+    var myEvents = result; //변수선언 / 호이스팅되서 위치는 상관없지만 보기좋게 위에 올려주쟈.
+    
+    
+	//2. 비동기방식처리. => 일단 사용자에게 보여줄페이지를 먼저 실행
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      },
+      initialDate: new Date(),
+      navLinks: true, // can click day/week names to navigate views
+      selectable: true,
+      selectMirror: true,
+      
+      select: function(arg) {  //한건추가 메소드 , arg = 캘린더내부에서 발생하는 이벤트
+        var title = prompt('타이틀을 등록하세요!');
+        if (title) {  //사용자가 값을 입력하면~!
+        	console.log(arg);
+        	//1.Ajax 호출.  XMLHttpRequest => open(), send()
+        	// = fetch() = ()에 매개값을 넣어주면됨
+        	fetch('../../../myCalendar', { //☆☆☆☆☆☆
+        		method: 'POST', //☆☆☆☆☆☆
+        		headers: {'Content-type': 'application/x-www-form-urlencoded'}, //☆☆☆☆☆☆
+        		body: 'title=' + title + '&start=' + arg.startStr + '&end='+ arg.endStr
+        	})
+        	.then(result => result.text())
+        	//.then(result => console.log(result))
+        	.then(result => {
+        		if(result == 'success') {
+          		calendar.addEvent({
+            	title: title,
+           		start: arg.start,
+            	end: arg.end,
+           		 allDay: arg.allDay
+	          })	
+        		} else {
+        			alert('처리중 에러가 발생했습니다.');
+        		}
+        	})
+        	.catch(error => console.log(error));
+        } //끝 - 사용자가 값을 입력하면~!
+        calendar.unselect()
+      },
+      
+      //eventClick: function(arg) { //한건삭제 메소드
+        //if (confi//rm('Are you sure you want to delete this event?')) {
+        	// fetch call.
+        
+          //arg.event.remove()
+        //}
+      //},
+      eventClick: function (arg) { //한건삭제 메소드
+                        
+            if (confirm('Are you sure you want to delete this event?')) {
+                fetch('../../../myCalendar', {//서블릿 주소
+                     method: 'POST',
+                     headers: {
+                       'Content-type': 'application/x-www-form-urlencoded'
+                     },
+                     body: 'title=' + arg.event.title + '&start=' + arg.event.startStr + '&end=' +arg.event.endStr +'&job=delete'
+                   })
+                   .then(result => result.text())
+                   .then(result => {
+                     if (result == 'success') {
+                       arg.event.remove()
+                     } else {
+                       alert('처리 중 에러!')
+                     }
+                   })
+                   .catch(error => console.log(error));
+
+               }
+              
+               arg.event.remove()
+            
+          },
+      
+      editable: true,
+      dayMaxEvents: true, // allow "more" link when too many events
+      events: myEvents //  [{title: '데이트', start: '2020-09-06'}]...
+    }); //new FullCalendar.Calendar();
+
+    calendar.render();
+    
+    } //end of showResultCallBack
+    
+  });
+
+</script>
+<style>
+body {
+	margin: 40px 10px;
+	padding: 0;
+	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+	font-size: 14px;
+}
+
+#calendar {
+	max-width: 1100px;
+	margin: 0 auto;
+}
+</style>
+</head>
+<body>
+
+	<div id='calendar'></div>
+
+</body>
+</html>

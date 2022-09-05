@@ -46,7 +46,7 @@ public class AddMemberServlet extends HttpServlet {
 
 		// 처리결과를 ajax 호출한 페이지로 반환.
 		if (addCnt == 1) {
-			String json = "{\"retCode\": \"success\", \"memberId\" : \""+id+"\", \"memberPw\" : "+pw+", \"memberName\" : \""+nm+"\"}";
+			String json = "{\"retCode\": \"success\", \"memberId\" : \""+id+"\", \"memberPw\" : \""+pw+"\", \"memberName\" : \""+nm+"\"}";
 			response.getWriter().print(json); // HttpServletResponse response = 응답정보 반환
 		} else {
 			String json = "{\"retCode\": \"fail\"}";

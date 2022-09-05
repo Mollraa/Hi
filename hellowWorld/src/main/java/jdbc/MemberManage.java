@@ -18,6 +18,92 @@ public class MemberManage extends DAO {
 	public static MemberManage getInstance() {
 		return mm;
 	}
+	
+	// 풀캘린더 관련. 캘린더도 여기서 같이사용 0905(from).
+	public List<FullCalendar> scheduleList(){
+		String sql = "select * from my_calendar";
+		List<FullCalendar> list = new ArrayList<>();
+		conn();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				FullCalendar cal = new FullCalendar();
+				cal.setTitle(rs.getString("title"));
+				cal.setStartDate(rs.getString("start_date"));
+				cal.setEndDate(rs.getString("end_date"));
+				list.add(cal);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		} return list;
+	}
+	
+	//한건 입력
+	public boolean insertCalendar(FullCalendar full) {
+		String sql = "insert into my_calendar values(?,?,?)";
+		conn();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, full.getTitle());
+			pstmt.setString(2, full.getStartDate());
+			pstmt.setString(3, full.getEndDate());
+			int r = pstmt.executeUpdate();
+			if (r > 0) {
+				return true; // 정상적으로 한건 삭제.
+			} 
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		} return false; // 정상처리 안된 경우.
+	}
+	// 한건 삭제
+//	public boolean deleteCalendar(String title) {
+//		String sql = "DELETE FROM my_calendar WHERE title = ?";
+//		conn();
+//		try {
+//			pstmt = conn.prepareStatement(sql);
+//			pstmt.setString(1, title);
+//			
+//			int r = pstmt.executeUpdate();
+//			if (r > 0) {
+//				return true; // 정상적으로 한건 삭제.
+//			} 
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			disconnect();
+//		} return false; // 정상처리 안된 경우.
+//	}
+	
+	  public boolean delCalendar(FullCalendar full) {
+	      conn();
+	      String sql = "delete from my_calendar where title=?and start_date=? and end_date=?";
+	      try {
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, full.getTitle());
+	         pstmt.setString(2, full.getStartDate());
+	         pstmt.setString(3, full.getEndDate());
+	         int r = pstmt.executeUpdate();
+	         if (r > 0) {
+	            return true;
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         disconnect();
+	      }
+	      return false;
+	   }
+	
+	
+	// 풀캘린더 관련. 캘린더도 여기서 같이사용 0905(to).
+	
 
 	// 로그인 메소드
 	public Member loginInfo(String id) {

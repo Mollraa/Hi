@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <style>
+        div.container {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        figure {
+            border: 1px solid green;
+            width: 700px;
+            float: left;
+        }
+
+        ul>li {
+            width: 100%;
+        }
+
+        label {
+            display: inline-block;
+            width: 150px;
+        }
+
+        div.add {
+            float: left;
+            width: 150px;
+            position: relative;
+            top: 100px;
+        }
+
+        .add button {
+            width: 100px;
+        }
+
+        div.content {
+            clear: both;
+            margin-left: 40px;
+        }
+
+        div.content th {
+            width: 135px;
+        }
+
+        div.content th:nth-child(1) {
+            width: 30px;
+        }
+
+        div.content td button {
+            margin-left: 40px;
+        }
+    </style>
+    <script src="./js/mysource.js"></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <h3>게시글 등록</h3>
+        <figure>
+            <figcaption>등록</figcaption>
+            <ul>
+                <li><label for="">게시글번호 </label><input type="number" id="bno"></li>
+                <li><label for="">제목 </label><input type="number" id="title"></li>
+                <li><label for="">내용 </label><textarea cols="30" rows="3" id="content"></textarea></li>
+                <li><label for="">작성자 </label><input type="number" id="writer"></li>
+            </ul>
+        </figure>
+        <div class="add">
+            <button id="addBtn">등록</button>
+            <button id="delBtn">선택삭제</button>
+        </div>
+
+        <div class="content">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox"></th>
+                        <th>글번호</th>
+                        <th>글제목</th>
+                        <th>내용</th>
+                        <th>작성자</th>
+                        <th>작성일자</th>
+                        <th>삭제</th>
+                    </tr>
+                </thead>
+                <tbody id="list">
+                    <tr>
+                        <td><input type="checkbox" name="" id=""></td>
+                        <td>100</td>
+                        <td>문의입니다.</td>
+                        <td>find함수는 어떻게 사용하나요?</td>
+                        <td>hong123</td>
+                        <td>2022-09-05</td>
+                        <td><button>삭제</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
